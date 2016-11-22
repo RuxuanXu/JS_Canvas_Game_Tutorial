@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NTNUCIC CANVAS TUTORIAL</title>
+
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+        <meta name="og:title">
+        <meta name="og:url">
+        <meta name="og:description">
+        <meta name="og:image" content="images/cic.jpg">
+        <meta name="og:site_name" content="NTNUCIC">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+        <style>
+            td{
+                 text-align:center !important;
+                 border:0 !important;
+            }
+            h2 {
+                font-size: 1.8em !important;
+            }
+            #intro div{
+				display: inline-block;
+				margin: 0 2em;
+            }
+        </style>
+		
+
+		
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>從零開始做遊戲！</h1>
+                    <h3>canvas上的宇宙飛船</h3>
+                </section>           				
+				<section>
+				    <section>
+				    <a href="game/game.html">
+				    <img src="images/gameview.png"></img>	
+                    </a>
+                    </section>
+                    <section>
+					<a href="game/game.html">
+				    <img src="images/pony.png"></img>	
+                    </a>
+                    </section>					
+				</section>
+				
+                <section>
+				    <section>
+					<h1>WEB前端三大語言</h1>
+					</section>
+					<section>
+                        <h2>WEB前端三大語言</h2>
+                        <div style="position:relative;top:1rem">						
+					    <h2>HTML</h2>
+					    <h2>CSS</h2>
+					    <h2>JavaScript</h2>
+				    </section>
+					<section>
+					    	<h2>HTML</h2>
+					    	<h3><font color="red">H</font>yper<font color="red">t</font>ext 
+					    	<font color="red">M</font>arkup <font color="red">L</font>anguage</h3>
+					    	<h3>超文本標記語言</h3>
+					    	<h3>告訴瀏覽器如何顯示網頁</h3>
+				    </section>
+		            <section>
+                            <h2 >CSS</h2>
+					    	<h3><font color="red">C</font>ascading <font color="red">S</font>tyle <font color="red">S</font>heets</h3>
+					    	<h3>定義網頁元素的樣式</h3>
+                    </section>
+		            <section>
+				   	    <div style="position:relative;top:3rem">
+                        <h2>JS</h2>
+						<h3><font color="red">J</font>ava<font color="red">S</font>cript</h3>
+						<h3>回應使用者操作</h3>
+						<h3>控制HTML5網頁元素</h3>
+						<h3>在瀏覽器端做運算</h3>
+                    </section>
+                </section>
+				<section>
+				    <section>
+				    <h1>初探JavaScript</h1>
+					</section>
+					<section>
+					<h2>JavaScript-變數宣告</h2>
+					</section>
+					<section>
+					<h3>JavaScript-變數宣告</h3>
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#709070;font-style:italic">//在JS中，型態不需要宣告，型態資訊儲存在物件上：</span>
+
+<span style="color:#6080ff">var</span> num <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">10</span>;        <span style="color:#709070;font-style:italic">//num是一個數字</span>
+<span style="color:#6080ff">var</span> num <span style="color:#ffffa0">=</span> <span style="color:#ff2020">'ten'</span>;     <span style="color:#709070;font-style:italic">//現在num是字串</span>
+
+<span style="color:#709070;font-style:italic">//這就是動態型別(Dynamic Typing)。</span>
+</pre>
+					</section>
+					<section>
+					<h3>JavaScript-資料型態</h3>
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> playerName <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"Twilight"</span>                  <span style="color:#709070;font-style:italic">// String</span>
+<span style="color:#6080ff">var</span> life <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;                              <span style="color:#709070;font-style:italic">// Number</span>
+<span style="color:#6080ff">var</span> alive <span style="color:#ffffa0">=</span> true;                            <span style="color:#709070;font-style:italic">// Boolean</span>
+<span style="color:#6080ff">var</span> friends <span style="color:#ffffa0">=</span> [<span style="color:#ff2020">"Pinkie"</span>, <span style="color:#ff2020">"Apple"</span>, <span style="color:#ff2020">"Rarity"</span>]; <span style="color:#709070;font-style:italic">// Array</span>
+<span style="color:#6080ff">var</span> Backpack <span style="color:#ffffa0">=</span> {owner:<span style="color:#ff2020">"Twilight"</span>, book:<span style="color:#22c0ff">10</span>};  <span style="color:#709070;font-style:italic">// Object</span>
+</pre>
+					</section>
+					<section>
+					<h3>遊戲中不管是玩家、敵人、子彈、背景...<br/>
+					經過宣告就可以在程式中拿來使用。</h3>
+					</section>
+					<section>
+				    <h3>如果要量產同一種類的物件呢？</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">var</span> Player1 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Twilight"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>}; 
+<span style="color:#ffffa0">var</span> Player2 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Sunset"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>}; 
+<span style="color:#ffffa0">var</span> Player3 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Rainbow"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">150</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">0</span>}; 
+</pre>
+					</section>
+					<section>
+				    <h3>如果要量產同一種類的物件呢？</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">var</span> Player1 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Twilight"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>}; 
+<span style="color:#ffffa0">var</span> Player2 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Sunset"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">100</span>}; 
+<span style="color:#ffffa0">var</span> Player3 <span style="color:#ffffa0">=</span> {name<span style="color:#ffffa0">:</span><span style="color:#ff2020">"Rainbow"</span>, HP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">150</span>, MP<span style="color:#ffffa0">:</span><span style="color:#22c0ff">0</span>}; 
+</pre>
+                    <div style="position:relative;top:1rem">
+					<h4>物件內容變多的話，宣告式會變得臃腫</h4>
+					</section>
+					<section>
+				    <h3>在JS的世界裡，<br/>
+					函式負責執行各種動作。<br/>
+					而"物件"除了個別宣告，<br/>
+					也可以用函式產生。</h3>
+					</section>
+					<section>
+					<h2>JavaScript-函式宣告</h2>
+					</section>	
+					<section>
+					<h3>JavaScript-函式宣告</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">functionName</span>() {
+   <span style="color:#709070;font-style:italic">//Write something...</span>
+}  
+<span style="color:#709070;font-style:italic">//函式宣告式</span>
+</pre>
+				    </section>
+					<section>
+					<h3>JavaScript-函式宣告</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">Player</span>(name) {
+   this.name <span style="color:#ffffa0">=</span> name;
+   this.HP <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+   this.MP <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+} 
+<span style="color:#6080ff">var</span> twilight <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Player</span>(<span style="color:#ff2020">"Twilight"</span>);
+twilight.MP <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">150</span>;
+</pre>
+					</section>
+				</section>
+			    <section>
+					<section>
+					<h2>Start! 繪製宇宙背景</h2>
+	     			</section>
+					<section>
+					<h3>打開你的Notepad++ 或者記事本...</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px">&lt;!DOCTYPE html>   <span style="color:#709070;font-style:italic">&lt;!-- 告訴瀏覽器文檔的類型 --></span>
+&lt;html>
+
+&lt;canvas>&lt;/canvas>
+
+&lt;/html>
+</pre>
+                    <h4>儲存成"game.html"。</h4>
+					</section>
+					<section>
+					<h3>在canvas標籤上加點東西：</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px">&lt;canvas id=<span style="color:#ff2020">"myCanvas"</span> width=<span style="color:#ff2020">"600"</span> height=<span style="color:#ff2020">"480"</span> 
+        style=<span style="color:#ff2020">"background-color:Black"</span>>&lt;/canvas>
+<span style="color:#709070;font-style:italic">&lt;!-- 讓畫布變成黑色 --></span>
+</pre>
+					</section>
+					<section>
+					<h2>Question 1:</h2>
+					<div style="position:relative;top:1rem">
+					<h3>canvas的長、寬寫在html標籤裡，</h3>
+					<h3>和寫在CSS(style)裡的差別？</h3>
+					</section>
+				    <section>
+					<h2>在HTML中嵌入JS</h2>
+					<h3>兩種方法</h3>
+	     			</section>
+				    <section>
+					<h3>在HTML中嵌入JS-方法A</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px">&lt;script>
+
+<span style="color:#709070;font-style:italic">//在這裡寫JavaScript...</span>
+
+&lt;/script>
+</pre>
+	     			</section>
+					<section>
+					<h3>在HTML中嵌入JS-方法B</h3>
+					<div style="position:relative;top:1rem">	
+					<h4>新增一個檔案，儲存為script.js</h4>
+					<h4>把檔案連結添加在&lt;script>標籤上：</h4>
+<pre style="background:#404040;color:#dedede;font-size:30px">&lt;script src=<span style="color:#ff2020">"script.js"</span>>&lt;/script>
+</pre>
+	     			</section>
+					<section>
+					<h2>開始寫JS吧!!</h2>
+	     			</section>
+				    <section>
+					<h3>在script.js的開頭取得畫布元素：</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> canvas <span style="color:#ffffa0">=</span> document.getElementById(<span style="color:#ff2020">"myCanvas"</span>);
+<span style="color:#709070;font-style:italic">//getElementById()：用id來叫出html中的元素</span>
+
+<span style="color:#6080ff">var</span> ctx <span style="color:#ffffa0">=</span> canvas.getContext(<span style="color:#ff2020">"2d"</span>);
+<span style="color:#709070;font-style:italic">//getContext()：設定canvas的渲染環境</span>
+<span style="color:#709070;font-style:italic">//"渲染環境"可以是"2d"、可以是"WebGL"(繪製3D用)。</span>
+</pre>
+	     			</section>
+					<section>
+					<h3>2D繪圖-canvas的坐標系</h3>
+					<div style="position:relative;top:1rem">
+					<img src="images/grid.png" width="60%" height="60%">
+					</section>
+					<section>
+					<h3>2D繪圖-矩形</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">ctx.fillStyle <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"white"</span>;
+<span style="color:#709070;font-style:italic">//填入白色。</span>
+ctx.fillRect(<span style="color:#22c0ff">100</span>, <span style="color:#22c0ff">100</span> , <span style="color:#22c0ff">150</span>, <span style="color:#22c0ff">150</span>);
+<span style="color:#709070;font-style:italic">//從(100,100)開始繪製寬150，高150的矩形。</span>
+</pre>
+					</section>
+					<section>
+					<h2>在畫布上灑滿星星</h2>
+					</section>
+					<section>
+					<h3>Canvas繪圖-星星製造函式</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">Star</span>(){
+    this.x <span style="color:#ffffa0">=</span> Math.random() <span style="color:#ffffa0">*</span> canvas.width;
+    this.y <span style="color:#ffffa0">=</span> Math.random() <span style="color:#ffffa0">*</span> canvas.height;
+    <span style="color:#709070;font-style:italic">//Math.random():產生0~1的隨機數</span>
+}
+</pre>
+					</section>
+					<section>
+					<h3>Canvas繪圖-量產星星</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> star_count <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">150</span>; <span style="color:#709070;font-style:italic">//星星有150顆</span>
+<span style="color:#6080ff">var</span> stars <span style="color:#ffffa0">=</span> [];       <span style="color:#709070;font-style:italic">//宣告stars陣列</span>
+<span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>){
+        stars[i] <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Star</span>();
+        <span style="color:#709070;font-style:italic">//在陣列中生成新的星星</span>
+}
+</pre>
+                    <div style="position:relative;top:1rem">
+					<h4>stars[]陣列中的每顆星星都有自己的(x,y)座標。</h4>
+					</section>
+					<section>
+					<h3>Canvas繪圖-星空繪製函式</h3>
+					<div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">drawStars</span>(){
+        ctx.fillStyle <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"white"</span>;
+        <span style="color:#ffffa0">for</span>(<span style="color:#ffffa0">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i &lt; star_count; i<span style="color:#ffffa0">+</span><span style="color:#ffffa0">+</span>){      
+            ctx.fillRect(stars[i].x,stars[i].y,<span style="color:#22c0ff">2</span>,<span style="color:#22c0ff">2</span>);
+            <span style="color:#709070;font-style:italic">//繪製從座標點(stars[i].x,stars[i].y)開始，</span>
+            <span style="color:#709070;font-style:italic">//長寬皆為2的矩形</span>
+        }
+}
+</pre>
+					</section>
+					<section>
+					<h3>Canvas繪圖-歡迎來到宇宙</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">drawStars();
+</pre>
+                    <div style="position:relative;top:1rem">
+                    <h4>像這樣呼叫這支函式看看...。</h4>
+					</section>
+					<section>
+					<h3>需要不同大小的星星?</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">ctx.fillRect(stars[i].x, stars[i].y, Math.random()<span style="color:#ffffa0">*</span><span style="color:#22c0ff">3</span>, 
+             Math.random()<span style="color:#ffffa0">*</span><span style="color:#22c0ff">3</span>);
+<span style="color:#709070;font-style:italic">//繪製長與寬為0~3隨機數的矩形</span>
+</pre>
+                    <div style="position:relative;top:1rem">
+                    <h4>修改drawStars()函式中fillRect的參數。</h4>
+					</section>
+					<section>
+					<h4>星空背景的程式碼</h4>
+<pre style="background:#404040;color:#dedede"><span style="color:#6080ff">var</span> canvas <span style="color:#ffffa0">=</span> document.getElementById(<span style="color:#ff2020">"myCanvas"</span>);
+<span style="color:#6080ff">var</span> ctx <span style="color:#ffffa0">=</span> canvas.getContext(<span style="color:#ff2020">"2d"</span>);
+
+<span style="color:#6080ff">var</span> star_count <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">150</span>;
+<span style="color:#6080ff">var</span> stars <span style="color:#ffffa0">=</span> []; 
+<span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>){
+        stars[i] <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Star</span>();
+}
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">Star</span>(){
+        this.x <span style="color:#ffffa0">=</span> Math.random() <span style="color:#ffffa0">*</span> canvas.width;
+        this.y <span style="color:#ffffa0">=</span> Math.random() <span style="color:#ffffa0">*</span> canvas.height;
+}
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">drawStars</span>(){
+        ctx.fillStyle <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"white"</span>;
+        <span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>){      
+            ctx.fillRect(stars[i].x, stars[i].y, Math.random()<span style="color:#ffffa0">*</span><span style="color:#22c0ff">3</span>, Math.random()<span style="color:#ffffa0">*</span><span style="color:#22c0ff">3</span>);
+        }
+}
+drawStars();
+</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>如何建造太空船</h2>
+	     			</section>
+				    <section>
+					<h2>撿現成的太空船</h2>
+	     			</section>
+					<section>
+					<h3>上<a href="http://opengameart.org/art-search?keys=spaceship">OpenGameArt.org</a>搜尋spaceship。</h3>
+					<div style="position:relative;top:1rem">
+					<h4>(或使用任何你喜歡的圖片)</h4>
+					<h4>將透明背景的png檔儲存下來，</h4>
+					<h4>和script.js放在同一個資料夾。</h4>
+					</section>
+					<section>
+					<h3>讀取圖檔</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> ship <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>;   <span style="color:#709070;font-style:italic">//宣告ship是Image元素</span>
+ship.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>; <span style="color:#709070;font-style:italic">//ship的圖檔來源</span>
+ctx.drawImage(ship,<span style="color:#22c0ff">300</span>,<span style="color:#22c0ff">240</span>);
+<span style="color:#709070;font-style:italic">//在座標(300,240)的位置繪製出ship</span>
+</pre>
+                    <div style="position:relative;top:1rem">
+	     			</section>
+					<section>
+					<h3>讀取圖檔</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> ship <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>;   <span style="color:#709070;font-style:italic">//宣告ship是Image元素</span>
+ship.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>; <span style="color:#709070;font-style:italic">//ship的圖檔來源</span>
+ctx.drawImage(ship,<span style="color:#22c0ff">300</span>,<span style="color:#22c0ff">240</span>);
+<span style="color:#709070;font-style:italic">//在座標(300,240)的位置繪製出ship</span>
+</pre>
+                    <div style="position:relative;top:1rem">
+					<h4>沒有出現...?! 莫慌</h4>
+	     			</section>
+					<section>
+					   <h3>讀取圖檔</h3>
+					   <div style="position:relative;top:1rem">
+					   <pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> ship <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>();     <span style="color:#709070;font-style:italic">//宣告ship是Image元素</span>
+ship.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>;     <span style="color:#709070;font-style:italic">//ship的圖檔來源</span>
+ship.<span style="color:#fc6;font-weight:700">onload</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>() {
+        ctx.drawImage(ship,<span style="color:#22c0ff">300</span>,<span style="color:#22c0ff">240</span>);
+        <span style="color:#709070;font-style:italic">//在座標(300,240)的位置繪製出ship</span>
+};
+</pre>
+					   <div style="position:relative;top:1rem">
+					   <h4>這是因為圖片來不及載入。</h4>
+					   <h4>onload: 等到圖片載入完畢再執行動作。</h4>
+
+					   </section>
+					   <section>
+					   <h3>讀取圖檔</h3>
+					   <div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">ctx.drawImage(ship,<span style="color:#22c0ff">300</span>,<span style="color:#22c0ff">240</span>,<span style="color:#22c0ff">100</span>,<span style="color:#22c0ff">100</span>);
+<span style="color:#709070;font-style:italic">//在座標(300,240)的位置繪製出ship</span>
+<span style="color:#709070;font-style:italic">//將圖片的長寬縮放為100*100</span>
+</pre>
+					   <div style="position:relative;top:1rem">
+					   <h4>drawImage()新增兩個參數，縮放圖片的大小。</h4>
+					   </section>
+				   	   <section>
+					   <h3>把零件包裝好，</h3><h3>才能製造更多的太空船！</h3>
+					   </section>
+					   <section>
+					   <h3>太空船製造函式</h3>
+					   <div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">Ship</span>(){
+    this.img <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>;
+    this.width <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+    this.height <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+    this.x <span style="color:#ffffa0">=</span> canvas.width/<span style="color:#22c0ff">2</span> <span style="color:#ffffa0">-</span> this.width/<span style="color:#22c0ff">2</span>;   
+    this.y <span style="color:#ffffa0">=</span> canvas.height <span style="color:#ffffa0">-</span> this.height<span style="color:#ffffa0">*</span><span style="color:#22c0ff">1.2</span>;
+    <span style="color:#709070;font-style:italic">//太空船繪製時在畫布中下方</span>
+}
+</pre>
+					   </section>
+					   <section>
+					   <h4>把這幾行：</h4>
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> ship <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>(); 
+ship.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>;
+ship.<span style="color:#fc6;font-weight:700">onload</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>() {
+        ctx.drawImage(ship,<span style="color:#22c0ff">300</span>,<span style="color:#22c0ff">240</span>,<span style="color:#22c0ff">100</span>,<span style="color:#22c0ff">100</span>);
+};
+</pre>
+					   <h4>改寫成：</h4>
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">var</span> player <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> Ship();       <span style="color:#709070;font-style:italic">//宣告player是Ship物件</span>
+player.img.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>;  <span style="color:#709070;font-style:italic">//player.img的圖檔來源</span>
+player.img.onload <span style="color:#ffffa0">=</span> function() {
+    ctx.drawImage(player.img, player.x, player.y,
+                  player.width, player.height);
+}<span style="color:#709070;font-style:italic">//將player繪製到畫布上</span>
+</pre>
+					   </section>
+					   <section>
+					   <h4>載入太空船的程式碼</h4>
+<pre style="background:#404040;color:#dedede"><span style="color:#6080ff">var</span> player <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Ship</span>();
+player.img.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"ship1.png"</span>;
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">Ship</span>(){
+    this.img <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Image</span>;
+    this.width <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+    this.height <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;
+    this.x <span style="color:#ffffa0">=</span> canvas.width/<span style="color:#22c0ff">2</span> <span style="color:#ffffa0">-</span> this.width/<span style="color:#22c0ff">2</span>;   
+    this.y <span style="color:#ffffa0">=</span> canvas.height<span style="color:#ffffa0">-</span> this.height<span style="color:#ffffa0">*</span><span style="color:#22c0ff">1.2</span>;
+}
+
+player.img.<span style="color:#fc6;font-weight:700">onload</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>(){
+    ctx.drawImage(player.img, player.x, player.y,
+              player.width, player.height);
+}
+</pre>
+					<h4>下一個小節，我們將開始建立遊戲架構。</h4>
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>新手航行指南</h2>
+	     			</section>
+		     		<section>
+					<h3>遊戲基本架構</h3>
+					<img src="images/gameloop.png" width="100%" height="100%">
+					</section>
+					<section>
+					<h3>遊戲主迴圈-繪製畫面</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    <span style="color:#709070;font-style:italic">//render stuff here...</span>
+}
+
+setInterval(render, <span style="color:#22c0ff">30</span>);
+<span style="color:#709070;font-style:italic">//每30/1000秒執行一次render()</span>
+</pre>				
+					</section>
+					<section>
+					<h3>遊戲主迴圈-繪製畫面</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    drawStars();
+}
+</pre>
+					<div style="position:relative;top:1rem">
+					<h4>剪下剛剛的繪製星空函式，貼到render中間看看...</h4>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-繪製畫面</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    drawStars();
+}
+</pre>
+					<div style="position:relative;top:1rem">
+					<h4>星星似乎逐漸變亮，這是因為每過30/1000秒</h4>
+					<h4>都會繪製一遍星空，重疊了很多層。</h4>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-繪製畫面</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    ctx.clearRect(<span style="color:#22c0ff">0</span>, <span style="color:#22c0ff">0</span>, canvas.width, canvas.height);
+    <span style="color:#709070;font-style:italic">//清空從(0,0)開始，長寬與畫布相同的矩形</span>
+    drawStars();
+}
+</pre>
+					<div style="position:relative;top:1rem">
+					<h4>為了避免這種情況，每次RENDER前先將畫布清乾淨。</h4>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-繪製畫面</h3>
+					<div style="position:relative;top:1rem">					
+					</section>
+					<section>
+					<h2>滾動的星空</h2>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-更新狀態</h3>
+					<div style="position:relative;top:1rem">
+					<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">update</span>(){
+    <span style="color:#ffffa0">for</span> (<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>) {
+        stars[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> <span style="color:#22c0ff">5</span>;
+        <span style="color:#709070;font-style:italic">//每次執行update，星星的y座標都會+5</span>
+    }
+}
+</pre>
+					</section>
+					
+					<section>
+					<h3>遊戲主迴圈-更新狀態</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">update</span>(){
+    <span style="color:#ffffa0">for</span> (<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>) {
+        stars[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> <span style="color:#22c0ff">5</span>;
+        <span style="color:#709070;font-style:italic">//每次執行update，星星的y座標都會+5</span>
+        <span style="color:#ffffa0">if</span>(stars[i].y <span style="color:#ffffa0">></span> canvas.height){
+            stars[i].y <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> canvas.height;
+        } <span style="color:#709070;font-style:italic">//如果超過畫布範圍，移動位置回到最上面</span>
+    }
+}
+</pre>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-更新狀態</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    update(); <span style="color:#709070;font-style:italic">//每次render前先更新狀態</span>
+    ctx.clearRect(<span style="color:#22c0ff">0</span>, <span style="color:#22c0ff">0</span>, canvas.width, canvas.height);
+    drawStars();
+}
+</pre>
+					<div style="position:relative;top:1rem">
+					<h4>在render函式裡呼叫update</h4>
+					</section>
+					<section>
+					<h2>遊戲主迴圈-玩家操作</h2>
+	     			</section>
+					<section>
+					<h3>遊戲主迴圈-玩家操作</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">document.<span style="color:#fc6;font-weight:700">onkeydown</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>(event){
+    <span style="color:#709070;font-style:italic">//偵測鍵盤輸入</span>
+}
+</pre>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-玩家操作</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">player.speed <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">10</span>; <span style="color:#709070;font-style:italic">//添加新的屬性值：速度</span>
+document.<span style="color:#fc6;font-weight:700">onkeydown</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>(event){
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">37</span>) {
+        player.x <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> player.speed;
+    } <span style="color:#709070;font-style:italic">// &lt;-鍵</span>
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">39</span>) {
+        player.x <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> player.speed;
+    } <span style="color:#709070;font-style:italic">// ->鍵</span>
+}
+</pre>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-玩家操作</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">document.<span style="color:#fc6;font-weight:700">onkeydown</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>(event){
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">37</span>) {
+        <span style="color:#ffffa0">if</span>(player.x <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) 
+            player.x <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> player.speed;
+    }
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">39</span>) {
+        <span style="color:#ffffa0">if</span>(player.x<span style="color:#ffffa0">+</span>player.width <span style="color:#ffffa0">&lt;</span> canvas.width)  
+            player.x <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> player.speed;
+    }
+}
+</pre>
+					<div style="position:relative;top:1rem">
+					<h4>限制玩家移動範圍</h4>
+					</section>
+					<section>
+					<h3>遊戲主迴圈-玩家操作</h3>
+					<div style="position:relative;top:1rem">
+					<h4>把這幾行：</h4>
+<pre style="background:#404040;color:#dedede;font-size:30px">player.img.<span style="color:#fc6;font-weight:700">onload</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>() {
+    ctx.drawImage(player.img, player.x, player.y,
+              player.width, player.height);
+}
+</pre>
+					   <h4>改寫成：</h4>
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">draw</span>(ship) {
+    ctx.drawImage(ship.img, ship.x, ship.y,
+                  ship.width, ship.height);
+}
+</pre>
+					   </section>
+					   <section>
+     				   <h3>遊戲主迴圈-玩家操作</h3>
+					   <div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    update(); 
+    ctx.clearRect(<span style="color:#22c0ff">0</span>, <span style="color:#22c0ff">0</span>, canvas.width, canvas.height);
+    drawStars();
+    draw(player); <span style="color:#709070;font-style:italic">//把太空船畫在最上層</span>
+}
+</pre>				   
+					   <div style="position:relative;top:1rem">
+					   <h4>\現在可以操縱太空船了/</h4>
+					   </section>
+					   <section>
+					   <h4>遊戲主迴圈-操作、更新、繪製的程式碼</h4>
+<pre style="background:#404040;color:#dedede">document.<span style="color:#fc6;font-weight:700">onkeydown</span> <span style="color:#ffffa0">=</span> <span style="color:#6080ff">function</span>(event){
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">37</span>) {
+        <span style="color:#ffffa0">if</span>(player.x <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) 
+            player.x <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> player.speed;
+    }
+    <span style="color:#ffffa0">if</span>(event.keyCode <span style="color:#ffffa0">==</span> <span style="color:#22c0ff">39</span>) {
+        <span style="color:#ffffa0">if</span>(player.x<span style="color:#ffffa0">+</span>player.width <span style="color:#ffffa0">&lt;</span> canvas.width)  
+            player.x <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> player.speed;
+    }
+}
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">update</span>(){
+    <span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> star_count; i<span style="color:#ffffa0">++</span>) {
+        stars[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> <span style="color:#22c0ff">5</span>;
+        <span style="color:#ffffa0">if</span>(stars[i].y <span style="color:#ffffa0">></span> canvas.height){
+            stars[i].y <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> canvas.height;
+        }
+    }
+}
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    update(); 
+    ctx.clearRect(<span style="color:#22c0ff">0</span>, <span style="color:#22c0ff">0</span>, canvas.width, canvas.height);
+    drawStars();
+    draw(player);
+}
+setInterval(render, <span style="color:#22c0ff">30</span>);
+</pre>
+					   </section>
+				</section>
+				<section>
+					<section>
+					<h2>進入小行星帶</h2>
+	     			</section>
+					<section>
+					<h3>召喚敵軍</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">var</span> enemy_count <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">5</span>; <span style="color:#709070;font-style:italic">//5個敵人</span>
+<span style="color:#6080ff">var</span> enemy <span style="color:#ffffa0">=</span> []; <span style="color:#709070;font-style:italic">//很多個敵人放在一個陣列</span>
+<span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>){
+        enemy[i] <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Ship</span>();
+        <span style="color:#709070;font-style:italic">//每個敵人都是一艘船(?)</span>
+}
+</pre>
+                    <div style="position:relative;top:1rem">
+					<h4>有敵人才不會孤單</h4>
+	     			</section>
+					<section>
+					<h3>召喚敵軍</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>) {
+    enemy[i] <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">new</span> <span style="color:#f09040">Ship</span>();
+    enemy[i].img.src <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"asteroid.png"</span>;
+    randEnemy(enemy[i]);
+}
+
+<span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">randEnemy</span>(obj) {
+        obj.width <span style="color:#ffffa0">=</span> Math.random()<span style="color:#ffffa0">*</span><span style="color:#22c0ff">30</span><span style="color:#ffffa0">+</span><span style="color:#22c0ff">20</span>;
+        obj.height <span style="color:#ffffa0">=</span> obj.width;
+        obj.x <span style="color:#ffffa0">=</span> Math.random()<span style="color:#ffffa0">*</span>canvas.width;
+        obj.y <span style="color:#ffffa0">=</span> <span style="color:#ffffa0">-</span>canvas.height/<span style="color:#22c0ff">2</span>;
+        obj.speed <span style="color:#ffffa0">=</span> (Math.random()<span style="color:#ffffa0">+</span><span style="color:#22c0ff">1</span>)<span style="color:#ffffa0">*</span><span style="color:#22c0ff">3</span>;
+}
+</pre>
+					</section>
+					<section>
+					<h3>召喚敵軍-在Update()函式中加入</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>) {
+    enemy[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> enemy[i].speed;
+    <span style="color:#709070;font-style:italic">//敵人每次都會往下移動speed的量</span>
+}
+</pre>
+					</section>
+					<section>
+					<h3>召喚敵軍-在Update()函式中加入</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>) {
+    enemy[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> enemy[i].speed;
+    <span style="color:#709070;font-style:italic">//敵人每次都會往下移動speed的量</span>
+    <span style="color:#ffffa0">if</span>(enemy[i].y <span style="color:#ffffa0">></span> canvas.height) {
+        randEnemy(enemy[i]); 
+        <span style="color:#709070;font-style:italic">//隨機重置超出畫面的敵人</span>
+    }
+}
+</pre>
+					</section>
+					<section>
+					<h3>召喚敵軍-在Render()函式中加入</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>) {
+    draw(enemy[i]);
+    <span style="color:#709070;font-style:italic">//用draw函式繪製敵人</span>
+}
+</pre>
+					</section>
+					<section>
+					<h2>碰撞！</h2>
+	     			</section>
+					<section>
+					<h3>血量與分數</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px">player.score <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>;  <span style="color:#709070;font-style:italic">//玩家的分數：0</span>
+player.HP <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">100</span>;   <span style="color:#709070;font-style:italic">//玩家的血量：100</span>
+</pre>
+                    <div style="position:relative;top:1rem">
+					<h4>注意要放在var player(宣告過)之後</h4>
+	     			</section>
+					<section>
+					<h3>血量與分數</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">drawText</span>() {
+    ctx.fillStyle <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"white"</span>; <span style="color:#709070;font-style:italic">//字體顏色</span>
+    ctx.font <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"26px Arial"</span>; <span style="color:#709070;font-style:italic">//字體大小和字形</span>
+    ctx.fillText(<span style="color:#ff2020">"HP:"</span> <span style="color:#ffffa0">+</span> player.HP, <span style="color:#22c0ff">450</span>, <span style="color:#22c0ff">40</span>);
+    <span style="color:#709070;font-style:italic">//在(450,40)的位置印出生命值</span>
+    ctx.fillText(<span style="color:#ff2020">"SCORE:"</span> <span style="color:#ffffa0">+</span> player.score, <span style="color:#22c0ff">300</span>, <span style="color:#22c0ff">40</span>);
+    <span style="color:#709070;font-style:italic">//在(300,40)的位置印出分數</span>
+    ctx.fill();
+}
+</pre>
+					</section>
+					<section>
+					<h3>血量與分數-在Render()函式中加入</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">render</span>() {
+    <span style="color:#709070;font-style:italic">//略...</span>
+    drawText(); <span style="color:#709070;font-style:italic">//畫在最上層，也就是最後才畫</span>
+}
+</pre>
+					</section>
+					<section>
+					<h3>碰撞偵測函式</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">collisionDetect</span>(obj1,obj2) {
+    <span style="color:#6080ff">var</span> dx <span style="color:#ffffa0">=</span> Math.abs(obj1.x <span style="color:#ffffa0">-</span> obj2.x);
+    <span style="color:#6080ff">var</span> dy <span style="color:#ffffa0">=</span> Math.abs(obj1.y <span style="color:#ffffa0">-</span> obj2.y);
+    <span style="color:#709070;font-style:italic">// Math.abs(): 取絕對值</span>
+}
+</pre>
+	     			</section>
+					<section>
+					<h3>碰撞偵測函式</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">collisionDetect</span>(obj1,obj2) {
+    <span style="color:#6080ff">var</span> dx <span style="color:#ffffa0">=</span> Math.abs(obj1.x <span style="color:#ffffa0">-</span> obj2.x);
+    <span style="color:#6080ff">var</span> dy <span style="color:#ffffa0">=</span> Math.abs(obj1.y <span style="color:#ffffa0">-</span> obj2.y);
+    <span style="color:#ffffa0">if</span>(dx <span style="color:#ffffa0">&lt;</span> player.width/<span style="color:#22c0ff">2</span> <span style="color:#ffffa0">&amp;</span><span style="color:#ffffa0">&amp;</span> dy <span style="color:#ffffa0">&lt;</span> obj2.height) {
+        <span style="color:#ffffa0">if</span>(obj1 <span style="color:#ffffa0">==</span> player <span style="color:#ffffa0">&amp;</span><span style="color:#ffffa0">&amp;</span> player.HP <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) {
+            player.HP <span style="color:#ffffa0">-</span><span style="color:#ffffa0">=</span> <span style="color:#22c0ff">10</span>; <span style="color:#709070;font-style:italic">//玩家被撞少10滴血</span>
+            randEnemy(obj2); <span style="color:#709070;font-style:italic">//撞到玩家的obj2重置</span>
+        }
+    }
+}
+
+</pre>
+					</section>
+					<section>
+					<h3>碰撞偵測-在Update()函式中加入</h3>
+					<div style="position:relative;top:1rem">
+					<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">update</span>(){
+    <span style="color:#709070;font-style:italic">//更新星星狀態的迴圈</span>
+    <span style="color:#709070;font-style:italic">//略...</span>
+    
+    <span style="color:#709070;font-style:italic">//更新敵人狀態的迴圈</span>
+    <span style="color:#ffffa0">for</span>(<span style="color:#6080ff">var</span> i <span style="color:#ffffa0">=</span> <span style="color:#22c0ff">0</span>; i <span style="color:#ffffa0">&lt;</span> enemy_count; i<span style="color:#ffffa0">++</span>) {
+        collisionDetect(player,enemy[i]);
+        <span style="color:#709070;font-style:italic">//執行碰撞測試！</span>
+        enemy[i].y <span style="color:#ffffa0">+</span><span style="color:#ffffa0">=</span> enemy[i].speed;
+        <span style="color:#ffffa0">if</span>(enemy[i].y <span style="color:#ffffa0">></span> canvas.height) {
+            randEnemy(enemy[i]); 
+        }
+    }
+}
+</pre>
+					</section>
+					<section>
+					<h3>記分板-以時間計分</h3>
+					<div style="position:relative;top:1rem">
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">addScore</span>() {
+    <span style="color:#ffffa0">if</span>(player.HP <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) player.score <span style="color:#ffffa0">++</span>;
+        <span style="color:#709070;font-style:italic">//在玩家血量歸零之前，每過一秒加一分</span>
+}
+setInterval(addScore, <span style="color:#22c0ff">1000</span>);
+</pre>
+					</section>
+					<section>
+					<h3>Game Over的情況...</h3>	
+                    <div style="position:relative;top:1rem">					
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#6080ff">function</span> <span style="color:#fc6;font-weight:700">drawText</span>() {
+    <span style="color:#ffffa0">if</span>(player.HP <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) {
+            <span style="color:#709070;font-style:italic">//印出血量與分數</span>
+    }<span style="color:#ffffa0">else</span> {
+            <span style="color:#709070;font-style:italic">//印出gameover與計分</span>
+        ctx.fillStyle <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"red"</span>;
+        ctx.font <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"70px Arial"</span>;
+        ctx.fillText(<span style="color:#ff2020">"Game Over"</span>, <span style="color:#22c0ff">120</span>, <span style="color:#22c0ff">240</span>);
+        ctx.font <span style="color:#ffffa0">=</span> <span style="color:#ff2020">"30px Arial"</span>;
+        ctx.fillText(<span style="color:#ff2020">"Your Score: "</span> <span style="color:#ffffa0">+</span> player.score, 
+                      <span style="color:#22c0ff">220</span>, <span style="color:#22c0ff">288</span>);
+        ctx.fill();
+    }
+}
+
+</pre>
+	     			</section>
+					<section>
+					<h3>Game Over-更改Render函式</h3>	
+                    <div style="position:relative;top:1rem">	
+<pre style="background:#404040;color:#dedede;font-size:30px"><span style="color:#ffffa0">if</span>(player.HP <span style="color:#ffffa0">></span> <span style="color:#22c0ff">0</span>) draw(player);
+<span style="color:#709070;font-style:italic">//玩家生命值大於零，才畫出玩家</span>
+</pre>
+					</section>
+					<section>
+					<h2>進入可遊玩測試的階段了</h2>
+					<h3><a href="script01.js">目前為止的JS程式碼</a></h3>					
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>加入音效</h2>
+	     			</section>
+				</section>
+                <section id="join">
+                    <h1>歡迎各位加入我們！</h1>
+                    <table>
+                        <tr>
+                            <td>FB粉絲頁</td>
+                            <td>FB社團</td>
+                            <td>課程網頁</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="images/fanpage.png" alt="https://www.facebook.com/NTNUCIC/">
+                            </td>
+                            <td>
+                                <img src="images/public.png" alt="https://www.facebook.com/groups/ntnucic/">
+                            </td>
+                            <td>
+                                <img src="images/class.png" alt="http://www.ntnucic.club/104/">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+				slideNumber: 'c/t',
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
+Selector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
